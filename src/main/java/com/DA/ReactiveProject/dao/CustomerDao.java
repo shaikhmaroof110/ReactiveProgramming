@@ -43,4 +43,24 @@ public class CustomerDao {
 
     }
 
+
+    // without sleep method real flux example
+    public Flux<Customer> getCustomersStream()
+    {
+        return Flux.range(1,100)
+                .doOnNext(i -> System.out.println("Processing stream count  for vcustomer stream Handler::"+ i))
+                .map(i-> new Customer(i, "customer " + i));
+
+    }
+
+
+
+    public Flux<Customer> getCustomerList()
+    {
+        return Flux.range(1,100)
+                .doOnNext(i -> System.out.println("Processing count  for Handler::"+ i))
+                .map(i-> new Customer(i, "customer " + i));
+
+    }
+
 }
